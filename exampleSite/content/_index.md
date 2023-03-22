@@ -21,7 +21,7 @@ You can [**go to the examples**](#examples) or [**look at the included themes**]
 
 **{{< hint >}} Local maps are currently not supported, pending minor changes to Hugo's template engine. {{< /hint >}}**
 
-## Getting Started
+## Getting Startedimage.png
 
 ### 1. Add the module to your site
 
