@@ -28,124 +28,133 @@
 
 {{ else }}
 
-{{ $EPSILON := 0.00000000000001}}
+    {{ $EPSILON := 0.00000000000001}}
 
 
-{{ $xtile_end := 0 }}
-{{ $ytile_end := 0 }}
-{{ $xtile_start := 0 }}
-{{ $ytile_start := 0 }}
+    {{ $xtile_end := 0 }}
+    {{ $ytile_end := 0 }}
+    {{ $xtile_start := 0 }}
+    {{ $ytile_start := 0 }}
 
-{{ $X_start := 0 }}
-{{ $X_end := 0 }}
-{{ $Y_start := 0 }}
-{{ $Y_end := 0 }}
+    {{ $X_start := 0 }}
+    {{ $X_end := 0 }}
+    {{ $Y_start := 0 }}
+    {{ $Y_end := 0 }}
 
-{{ $Z2 := 0 }}
+    {{ $Z2 := 0 }}
 
-    {{ range $zoom := seq $mapparams.tilesMinZoom $mapparams.tilesMaxZoom}}
+        {{ range $zoom := seq $mapparams.tilesMinZoom $mapparams.tilesMaxZoom}}
 
-    {{ $X_start = index ($mapparams.Get "wm-bounding-box") 0 }}
-    {{ $Y_start = index ($mapparams.Get "wm-bounding-box") 3 }}
+        {{ $X_start = index ($mapparams.Get "wm-bounding-box") 0 }}
+        {{ $Y_start = index ($mapparams.Get "wm-bounding-box") 3 }}
 
-    {{ $X_end = index ($mapparams.Get "wm-bounding-box") 2 }}
-    {{ $Y_end = index ($mapparams.Get "wm-bounding-box") 1 }}
+        {{ $X_end = index ($mapparams.Get "wm-bounding-box") 2 }}
+        {{ $Y_end = index ($mapparams.Get "wm-bounding-box") 1 }}
 
-    {{ $Z2 = math.Pow 2 $zoom }}
-    
-    {{ if le $X_start 0 }}
-        {{ $xtile_start = 0 }}
-    {{ else if ge $X_start 1 }}
-        {{ $xtile_start = sub (int $Z2) 1 }}
-    {{ else }}
-        {{ $xtile_start = int (math.Floor (mul (add $X_start $EPSILON) $Z2)) }}
-    {{ end }}
+        {{ $Z2 = math.Pow 2 $zoom }}
+        
+        {{ if le $X_start 0 }}
+            {{ $xtile_start = 0 }}
+        {{ else if ge $X_start 1 }}
+            {{ $xtile_start = sub (int $Z2) 1 }}
+        {{ else }}
+            {{ $xtile_start = int (math.Floor (mul (add $X_start $EPSILON) $Z2)) }}
+        {{ end }}
 
-    {{ if le $Y_start 0 }}
-        {{ $ytile = 0 }}
-    {{ else if ge $Y_start 1 }}
-        {{ $ytile_start = sub (int $Z2) 1 }}
-    {{ else }}
-        {{ $ytile_start = int (math.Floor (mul (add $Y_start $EPSILON) $Z2)) }}
-    {{ end }}
+        {{ if le $Y_start 0 }}
+            {{ $ytile = 0 }}
+        {{ else if ge $Y_start 1 }}
+            {{ $ytile_start = sub (int $Z2) 1 }}
+        {{ else }}
+            {{ $ytile_start = int (math.Floor (mul (add $Y_start $EPSILON) $Z2)) }}
+        {{ end }}
 
-    {{ if le $X_end 0 }}
-    {{ $xtile_end = 0 }}
-    {{ else if ge $X_end 1 }}
-        {{ $xtile_end = sub (int $Z2) 1 }}
-    {{ else }}
-        {{ $xtile_end = int (math.Floor (mul (add $X_end $EPSILON) $Z2)) }}
-    {{ end }}
+        {{ if le $X_end 0 }}
+        {{ $xtile_end = 0 }}
+        {{ else if ge $X_end 1 }}
+            {{ $xtile_end = sub (int $Z2) 1 }}
+        {{ else }}
+            {{ $xtile_end = int (math.Floor (mul (add $X_end $EPSILON) $Z2)) }}
+        {{ end }}
 
-    {{ if le $Y_end 0 }}
-        {{ $ytile = 0 }}
-    {{ else if ge $Y_end 1 }}
-        {{ $ytile_end = sub (int $Z2) 1 }}
-    {{ else }}
-        {{ $ytile_end = int (math.Floor (mul (add $Y_end $EPSILON) $Z2)) }}
-    {{ end }}
+        {{ if le $Y_end 0 }}
+            {{ $ytile = 0 }}
+        {{ else if ge $Y_end 1 }}
+            {{ $ytile_end = sub (int $Z2) 1 }}
+        {{ else }}
+            {{ $ytile_end = int (math.Floor (mul (add $Y_end $EPSILON) $Z2)) }}
+        {{ end }}
 
-    {{ range $xtile := seq  $xtile_start $xtile_end }}
-        {{ range $ytile := seq  $ytile_start $ytile_end }}
-            {{ $tileurl := replace $mapparams.tiles "{z}" $zoom }}
-            {{ $tileurl := replace $tileurl "{x}" $xtile }}
-            {{ $tileurl := replace $tileurl "{y}" $ytile }}
-            
-            {{ $cacheKey := (print $tileurl ) }}
-       
-            {{ $tile := resources.GetRemote $tileurl (dict "key" $cacheKey) }}
+        {{ range $xtile := seq  $xtile_start $xtile_end }}
+            {{ range $ytile := seq  $ytile_start $ytile_end }}
+                {{ $tileurl := replace $mapparams.tiles "{z}" $zoom }}
+                {{ $tileurl := replace $tileurl "{x}" $xtile }}
+                {{ $tileurl := replace $tileurl "{y}" $ytile }}
+                
+                {{ $cacheKey := (print $tileurl ) }}
+        
+                {{ $tile := resources.GetRemote $tileurl (dict "key" $cacheKey) }}
 
-            {{ $newtile := $tile | resources.Copy (printf "tiles/%d/%d/%d.pbf" $zoom $xtile $ytile) }}
+                {{ $newtile := $tile | resources.Copy (printf "tiles/%d/%d/%d.pbf" $zoom $xtile $ytile) }}
 
-            {{ if $newtile.Permalink }}
+                {{ if $newtile.Permalink }}
+
+                {{ end }}
+
 
             {{ end }}
-
-
         {{ end }}
-    {{ end }}
-    
-    {{ end }}
+        
+        {{ end }}
 {{ end }}
 
-<script src='{{ (resources.Get "js/maplibre-gl.js").RelPermalink }}'></script>
-<link href='{{ (resources.Get "css/maplibre-gl.css").RelPermalink }}' rel='stylesheet' />
+{{ if not (page.Scratch.Get "maplibre-res-loaded") }}
+    <script src='{{ (resources.Get "js/maplibre-gl.js").RelPermalink }}'></script>
+    <link href='{{ (resources.Get "css/maplibre-gl.css").RelPermalink }}' rel='stylesheet' />
+    {{ page.Scratch.Set "maplibre-res-loaded" true }}
+{{ end }}
 
-<style>
+<style type="text/css">
     #map-{{ $mapname }} {
         width: {{ .Get "width" | default $mapparams.width }}; 
         height: {{ .Get "height" | default $mapparams.height }};
     }
 </style>
-    <div id='map-{{ $mapname }}'></div>
-    <script>
-// run once page loaded
-window.addEventListener("load", (event) => {
-    let map = new maplibregl.Map({
-            container: 'map-{{ $mapname }}',
-            center:  {{ $mapparams.center }},
-            minZoom: {{ $mapparams.minZoom }},
-            maxZoom: {{ $mapparams.maxZoom }},
-            zoom: {{ $mapparams.zoom }},
-            bearing: {{ $mapparams.bearing }},
-            minPitch: {{ $mapparams.minPitch }},
-            maxPitch: {{ $mapparams.maxPitch }},
-            pitch: {{ $mapparams.pitch }},
-            antialias: {{ $mapparams.antialias }},
-            attributionControl: {{ $mapparams.attributionControl }},
-            customAttribution: "{{ $mapparams.customAttribution }}",
-            interactive: {{ $mapparams.interactive }},
-            style: {{ $mapstyle | jsonify | safeJS }},
-        });
-        map.addControl(new maplibregl.NavigationControl());
+    
+<div id='map-{{ $mapname }}'>
+<!-- map will be rendered here -->
+</div>
 
-        {{ range $mapparams.markers}}
-        new maplibregl.Marker()
-            .setLngLat({{ .location }})
-            .setPopup(new maplibregl.Popup().setHTML("{{ .text }}")) 
-            .addTo(map);
-        {{ end }}
-})
+<script type="text/javascript">
+    // run once page loaded
+    window.addEventListener("load", (event) => {
+        let map = new maplibregl.Map({
+                container: 'map-{{ $mapname }}',
+                center:  {{ $mapparams.center }},
+                minZoom: {{ $mapparams.minZoom }},
+                maxZoom: {{ $mapparams.maxZoom }},
+                zoom: {{ $mapparams.zoom }},
+                bearing: {{ $mapparams.bearing }},
+                minPitch: {{ $mapparams.minPitch }},
+                maxPitch: {{ $mapparams.maxPitch }},
+                pitch: {{ $mapparams.pitch }},
+                antialias: {{ $mapparams.antialias }},
+                attributionControl: {{ $mapparams.attributionControl }},
+                customAttribution: "{{ $mapparams.customAttribution }}",
+                interactive: {{ $mapparams.interactive }},
+                style: {{ $mapstyle | jsonify | safeJS }},
+            });
+
+            // add navigation control (the +/- zoom buttons)
+            map.addControl(new maplibregl.NavigationControl());
+
+            // add markers if any
+            {{ range $mapparams.markers}}
+                new maplibregl.Marker()
+                    .setLngLat({{ .location }})
+                    .setPopup(new maplibregl.Popup().setHTML("{{ .text }}")) 
+                    .addTo(map);
+            {{ end }}
+    })
 </script>
-
 {{ end }}
