@@ -119,7 +119,6 @@ params:
           - location: [-0.127758, 51.507351]
             text: 'Welcome to London'
 ```
-{{< map "map_3d" >}}
 
 ## License
 
