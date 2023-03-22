@@ -1,16 +1,32 @@
 
-{{ if not (.Get 0) }}
-    <p>Error: No map name specified. Please specify a map name in the shortcode. Example: \{\{< map "mapname" >\}\}</p>
-{{ else if not ((site.Params.Get "hugo-maps").Get (.Get 0)) }}
-    <p>Error: Map name {{ .Get 0 }} not found in config. Please check your config file.</p>
+{{ if not (.Get "name") }}
+    <p>Error: No map name specified. Please specify a map name in the shortcode. Example: \{\{< map name="mapname" >\}\}</p>
+{{ else if not ((site.Params.Get "hugo-maps").Get (.Get "name")) }}
+    <p>Error: Map name {{ .Get "name" }} not found in config. Please check your config file.</p>
 {{ else }}
 
-{{ $mapname := .Get 0}}
-{{ $mapparams := (site.Params.Get "hugo-maps").Get $mapname}}
-{{ $defaultparams := (site.Params.Get "hugo-maps").default }}
+
+{{ $mapname := md5 now.UnixNano }}
+
+{{ $mapparams := (site.Params.Get "hugo-maps").Get (.Get "name")}}
 {{ $baseparams := (site.Data.base) }}
-{{ $mapparams = merge $defaultparams $mapparams }}
-{{ $mapparams = merge $baseparams $mapparams }}
+{{ $defaultparams := (site.Params.Get "hugo-maps").default }}
+
+{{ $mapparams = merge $baseparams $defaultparams $mapparams .Params}}
+
+{{ $mapstyle := (dict) }}
+
+{{ if eq $mapparams.type "remote"}}
+
+    {{ $tilesource := (dict "sources" (dict "openmaptiles" (dict "type" "vector" "url" ( $mapparams.tilejson)))) }}
+    {{ $glyps := dict "glyphs" (print site.BaseURL "glyphs/{fontstack}/{range}.pbf") }}
+
+    {{ $mapstyle = resources.Get (printf "map-styles/%s.json" $mapparams.style) | unmarshal }}
+
+    {{ $mapstyle = merge $mapstyle $tilesource}}
+    {{ $mapstyle = merge $mapstyle $glyps}}
+
+{{ else }}
 
 {{ $EPSILON := 0.00000000000001}}
 
@@ -26,8 +42,6 @@
 {{ $Y_end := 0 }}
 
 {{ $Z2 := 0 }}
-
-{{ if eq $mapparams.type "local"}}
 
     {{ range $zoom := seq $mapparams.tilesMinZoom $mapparams.tilesMaxZoom}}
 
@@ -120,7 +134,8 @@ window.addEventListener("load", (event) => {
             antialias: {{ $mapparams.antialias }},
             attributionControl: {{ $mapparams.attributionControl }},
             customAttribution: "{{ $mapparams.customAttribution }}",
-            style: {{ safeJS (partial (printf "map-styles/%s.json" $mapparams.style) $mapparams) }}
+            interactive: {{ $mapparams.interactive }},
+            style: {{ $mapstyle | jsonify | safeJS }},
         });
         map.addControl(new maplibregl.NavigationControl());
 

@@ -5,10 +5,9 @@ title: 'Hugo Maps Demo'
 params:
   hugo-maps:
       default:
-        tiles: https://api.maptiler.com/tiles/v3/{z}/{x}/{y}.pbf?key=143k20pEdcyOeBepEEnR
+        tileJSON: https://api.maptiler.com/tiles/v3/tiles.json?key=143k20pEdcyOeBepEEnR
         height: 500px
       map_3d:
-        type: remote
         style: maptiler-3d
         center: [-0.127758, 51.507351]
         wm-bounding-box: [0.499265, 0.3329205529428414, 0.5001916666666667, 0.33214313777934357]
@@ -22,15 +21,18 @@ params:
         markers:
           - location: [-0.127972, 51.507722, ]
             text: "Nelson's Column"
-      map1:
-        type: remote
-        style: osm-bright
+      theme_map:
+        zoom: 15
+        interactive: false
         center: [-0.127758, 51.507351]
+      new_york_map:
+        center: [-74.005833, 40.712778]
       map2:
         type: remote
         style: toner
 
 module:
+  replacements: "github.com/marcpabst/hugo-maps -> ../.."
   imports:
    - # theme
      path: "github.com/alex-shpak/hugo-book"
