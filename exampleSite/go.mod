@@ -4,5 +4,5 @@ go 1.20
 
 require (
 	github.com/alex-shpak/hugo-book v0.0.0-20230213220505-036e037a63ba // indirect
-	github.com/marcpabst/hugo-maps v0.0.0-20230322135939-3a5c7c66d56a // indirect
+	github.com/marcpabst/hugo-maps v0.0.0-20230322143333-9573c7740996 // indirect
 )
