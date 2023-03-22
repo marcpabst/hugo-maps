@@ -12,15 +12,14 @@ You can either use a commercial map server (e.g., [Maptiler](https://www.maptile
 
 You can [**go to the examples**](#examples) or [**look at the included themes**](#themes). 
 
-{{< hint >}}
-Local maps are currently not supported, pending minor changes to Hugo's template engine.
-{{< /hint >}}
-
 ## Features
 - 🌍 High-quality interactive vector maps.
 - 🎨 Comes with lots of styles. You can also use your own custom style if you want.
+- 🅰️ Glyphs for all included styles are included in the module.
 - 📍 Support for custom markers.
 - 💾 Supports download of vector tiles at deploy time (no external API calls at runtime).
+
+**{{< hint >}} Local maps are currently not supported, pending minor changes to Hugo's template engine. {{< /hint >}}**
 
 ## Getting Started
 
@@ -122,7 +121,7 @@ params:
 
 ```
 
-### Example 1: A map with a custom center
+### Example 1: Custom map center
 
 ```yaml
 params:
