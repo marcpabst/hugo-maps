@@ -96,8 +96,8 @@
     {{ end }}
 {{ end }}
 
-<script src='https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js'></script>
-<link href='https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css' rel='stylesheet' />
+<script src='{{ (resources.Get "js/maplibre-gl.js").RelPermalink }}'></script>
+<link href='{{ (resources.Get "css/maplibre-gl.css").RelPermalink }}' rel='stylesheet' />
 
 <style>
     #map-{{ $mapname }} {
