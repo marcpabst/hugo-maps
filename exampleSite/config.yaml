@@ -32,7 +32,7 @@ params:
         style: toner
 
 module:
-  replacements: "github.com/marcpabst/hugo-maps -> ../.."
+  #replacements: "github.com/marcpabst/hugo-maps -> ../.."
   imports:
    - # theme
      path: "github.com/alex-shpak/hugo-book"
