@@ -1,0 +1,17 @@
+type: remote
+style: osm-bright
+tilesMinZoom: 0
+tilesMaxZoom: 15
+center: [-0.127758, 51.507351]
+minZoom: 0
+maxZoom: 23
+zoom: 11
+minPitch: 0
+maxPitch: 60
+pitch: 0
+bearing: 0
+antialias: false
+width: 100%
+height: 300px
+attributionControl: true
+customAttribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>'

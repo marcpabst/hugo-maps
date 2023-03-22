@@ -1,0 +1,137 @@
+
+{{ if not (.Get 0) }}
+    <p>Error: No map name specified. Please specify a map name in the shortcode. Example: \{\{< map "mapname" >\}\}</p>
+{{ else if not ((site.Params.Get "hugo-maps").Get (.Get 0)) }}
+    <p>Error: Map name {{ .Get 0 }} not found in config. Please check your config file.</p>
+{{ else }}
+
+{{ $mapname := .Get 0}}
+{{ $mapparams := (site.Params.Get "hugo-maps").Get $mapname}}
+{{ $defaultparams := (site.Params.Get "hugo-maps").default }}
+{{ $baseparams := (site.Data.base) }}
+{{ $mapparams = merge $defaultparams $mapparams }}
+{{ $mapparams = merge $baseparams $mapparams }}
+
+
+
+{{ $EPSILON := 0.00000000000001}}
+
+
+{{ $xtile_end := 0 }}
+{{ $ytile_end := 0 }}
+{{ $xtile_start := 0 }}
+{{ $ytile_start := 0 }}
+
+{{ $X_start := 0 }}
+{{ $X_end := 0 }}
+{{ $Y_start := 0 }}
+{{ $Y_end := 0 }}
+
+{{ $Z2 := 0 }}
+
+{{ if eq $mapparams.type "local"}}
+
+    {{ range $zoom := seq $mapparams.tilesMinZoom $mapparams.tilesMaxZoom}}
+
+    {{ $X_start = index ($mapparams.Get "wm-bounding-box") 0 }}
+    {{ $Y_start = index ($mapparams.Get "wm-bounding-box") 3 }}
+
+    {{ $X_end = index ($mapparams.Get "wm-bounding-box") 2 }}
+    {{ $Y_end = index ($mapparams.Get "wm-bounding-box") 1 }}
+
+    {{ $Z2 = math.Pow 2 $zoom }}
+    
+    {{ if le $X_start 0 }}
+        {{ $xtile_start = 0 }}
+    {{ else if ge $X_start 1 }}
+        {{ $xtile_start = sub (int $Z2) 1 }}
+    {{ else }}
+        {{ $xtile_start = int (math.Floor (mul (add $X_start $EPSILON) $Z2)) }}
+    {{ end }}
+
+    {{ if le $Y_start 0 }}
+        {{ $ytile = 0 }}
+    {{ else if ge $Y_start 1 }}
+        {{ $ytile_start = sub (int $Z2) 1 }}
+    {{ else }}
+        {{ $ytile_start = int (math.Floor (mul (add $Y_start $EPSILON) $Z2)) }}
+    {{ end }}
+
+    {{ if le $X_end 0 }}
+    {{ $xtile_end = 0 }}
+    {{ else if ge $X_end 1 }}
+        {{ $xtile_end = sub (int $Z2) 1 }}
+    {{ else }}
+        {{ $xtile_end = int (math.Floor (mul (add $X_end $EPSILON) $Z2)) }}
+    {{ end }}
+
+    {{ if le $Y_end 0 }}
+        {{ $ytile = 0 }}
+    {{ else if ge $Y_end 1 }}
+        {{ $ytile_end = sub (int $Z2) 1 }}
+    {{ else }}
+        {{ $ytile_end = int (math.Floor (mul (add $Y_end $EPSILON) $Z2)) }}
+    {{ end }}
+
+    {{ range $xtile := seq  $xtile_start $xtile_end }}
+        {{ range $ytile := seq  $ytile_start $ytile_end }}
+            {{ $tileurl := replace $mapparams.tiles "{z}" $zoom }}
+            {{ $tileurl := replace $tileurl "{x}" $xtile }}
+            {{ $tileurl := replace $tileurl "{y}" $ytile }}
+            
+            {{ $cacheKey := (print $tileurl ) }}
+       
+            {{ $tile := resources.GetRemote $tileurl (dict "key" $cacheKey) }}
+
+            {{ $newtile := $tile | resources.Copy (printf "tiles/%d/%d/%d.pbf" $zoom $xtile $ytile) }}
+
+            {{ if $newtile.Permalink }}
+
+            {{ end }}
+
+
+        {{ end }}
+    {{ end }}
+    
+    {{ end }}
+{{ end }}
+
+<script src='https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js'></script>
+<link href='https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css' rel='stylesheet' />
+
+<style>
+    #map-{{ $mapname }} {
+        width: {{ .Get "width" | default $mapparams.width }}; 
+        height: {{ .Get "height" | default $mapparams.height }};
+    }
+</style>
+    <div id='map-{{ $mapname }}'></div>
+    <script>
+        {
+    let map = new maplibregl.Map({
+            container: 'map-{{ $mapname }}',
+            center:  {{ $mapparams.center }},
+            minZoom: {{ $mapparams.minZoom }},
+            maxZoom: {{ $mapparams.maxZoom }},
+            zoom: {{ $mapparams.zoom }},
+            bearing: {{ $mapparams.bearing }},
+            minPitch: {{ $mapparams.minPitch }},
+            maxPitch: {{ $mapparams.maxPitch }},
+            pitch: {{ $mapparams.pitch }},
+            antialias: {{ $mapparams.antialias }},
+            attributionControl: {{ $mapparams.attributionControl }},
+            customAttribution: "{{ $mapparams.customAttribution }}",
+            style: {{ safeJS (partial (printf "map-styles/%s.json" $mapparams.style) $mapparams) }}
+        });
+        map.addControl(new maplibregl.NavigationControl());
+
+        {{ range $mapparams.markers}}
+        new maplibregl.Marker()
+            .setLngLat({{ .location }})
+            .setPopup(new maplibregl.Popup().setHTML("{{ .text }}")) 
+            .addTo(map);
+        {{ end }}
+    }
+</script>
+
+{{ end }}

@@ -1,0 +1,37 @@
+baseURL: 'http://example.org/'
+languageCode: 'en-gb'
+title: 'Hugo Maps Demo'
+
+cacheDir: "/Users/marcpabst/Documents/Repositories/hugo-maps/cache"
+
+params:
+  hugo-maps:
+      default:
+        tiles: https://api.maptiler.com/tiles/v3/{z}/{x}/{y}.pbf?key=get_your_own_OpIi9ZULNHzrESv6T2vL
+      map_3d:
+        type: local
+        style: maptiler-3d
+        center: [-0.127758, 51.507351]
+        wm-bounding-box: [0.499265, 0.3329205529428414, 0.5001916666666667, 0.33214313777934357]
+        tilesMinZoom: 0
+        tilesMaxZoom: 14
+        minZoom: 4
+        maxZoom: 20
+        zoom: 14
+        pitch: 30
+        antialias: true
+        markers:
+          - location: [-0.127758, 51.507351]
+            text: 'Welcome to London'
+      map1:
+        type: remote
+        style: osm-bright
+        center: [-0.127758, 51.507351]
+      map2:
+        type: remote
+        style: toner
+
+module:
+  import:
+   - "github.com/theNewDynamic/gohugo-theme-ananke"
+   - "github.com/marcpabst/hugo-maps"
