@@ -1,6 +1,4 @@
 github.com/alex-shpak/hugo-book v0.0.0-20230213220505-036e037a63ba h1:GSDZxN4SjTRVylJjVwr2Mnn1oy/e2ngZG9m1ULJ2qFg=
 github.com/alex-shpak/hugo-book v0.0.0-20230213220505-036e037a63ba/go.mod h1:L4NMyzbn15fpLIpmmtDg9ZFFyTZzw87/lk7M2bMQ7ds=
-github.com/marcpabst/hugo-maps v0.0.0-20230322151920-bb5887754daa h1:bJ4cFShsqV9HsuTDB1VtXWwmQiAjTcMBevChzX+BikE=
-github.com/marcpabst/hugo-maps v0.0.0-20230322151920-bb5887754daa/go.mod h1:sNDNVXcTlC/CBghljJTDEfftMpse1RhGqvBWhJggXNY=
-github.com/marcpabst/hugo-maps v0.0.0-20230322151957-d8279ddb6efe h1:+owGM3PKDU3eYV/blqVfedBm/nAs03HBsA9hmlWetLM=
-github.com/marcpabst/hugo-maps v0.0.0-20230322151957-d8279ddb6efe/go.mod h1:sNDNVXcTlC/CBghljJTDEfftMpse1RhGqvBWhJggXNY=
+github.com/marcpabst/hugo-maps v0.0.0-20230322152038-44c026022389 h1:FtwWU2kEtSMB+HIDOwiznaorhazeInB64GlhSZaHKjM=
+github.com/marcpabst/hugo-maps v0.0.0-20230322152038-44c026022389/go.mod h1:sNDNVXcTlC/CBghljJTDEfftMpse1RhGqvBWhJggXNY=
