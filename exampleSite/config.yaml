@@ -6,6 +6,7 @@ params:
   hugo-maps:
       default:
         tiles: https://api.maptiler.com/tiles/v3/{z}/{x}/{y}.pbf?key=get_your_own_OpIi9ZULNHzrESv6T2vL
+        height: 500px
       map_3d:
         type: remote
         style: maptiler-3d
@@ -15,12 +16,12 @@ params:
         tilesMaxZoom: 14
         minZoom: 4
         maxZoom: 20
-        zoom: 14
+        zoom: 15
         pitch: 30
         antialias: true
         markers:
-          - location: [-0.127758, 51.507351]
-            text: 'Welcome to London'
+          - location: [-0.127972, 51.507722, ]
+            text: "Nelson's Column"
       map1:
         type: remote
         style: osm-bright
