@@ -107,7 +107,7 @@
     <script>
         {
 // run once page loaded
-window.onload = (event) => {
+window.addEventListener("load", (event) => {
     let map = new maplibregl.Map({
             container: 'map-{{ $mapname }}',
             center:  {{ $mapparams.center }},
@@ -132,7 +132,7 @@ window.onload = (event) => {
             .addTo(map);
         {{ end }}
     }
-}
+})
 </script>
 
 {{ end }}
