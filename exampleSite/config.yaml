@@ -7,7 +7,7 @@ params:
       default:
         tiles: https://api.maptiler.com/tiles/v3/{z}/{x}/{y}.pbf?key=get_your_own_OpIi9ZULNHzrESv6T2vL
       map_3d:
-        type: local
+        type: remote
         style: maptiler-3d
         center: [-0.127758, 51.507351]
         wm-bounding-box: [0.499265, 0.3329205529428414, 0.5001916666666667, 0.33214313777934357]
@@ -32,6 +32,6 @@ params:
 module:
   imports:
    - # theme
-     path: "github.com/theNewDynamic/gohugo-theme-ananke"
+     path: "github.com/alex-shpak/hugo-book"
    - # maps
      path: "github.com/marcpabst/hugo-maps"

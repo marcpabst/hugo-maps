@@ -10,6 +10,10 @@ draft: false
 
 You can either use a commercial map server (e.g., [Maptiler](https://www.maptiler.com/)) or a self-hosted map server (e.g., [Tileserver GL](https://github.com/maptiler/tileserver-gl)) to generate the vector map tiles.
 
+{{< hint >}}
+Local maps are currently not supported, pending minor changes to Hugo's template engine.
+{{< /hint >}}
+
 ## Features
 - Built-in support for all [OpenMapTiles](https://openmaptiles.org/styles/) styles. You can also use your own custom style if you want.
 - You can either download the map tiles during the build process and host them alongside your site (local maps) or use a remote map server (remote maps).
@@ -119,6 +123,8 @@ params:
           - location: [-0.127758, 51.507351]
             text: 'Welcome to London'
 ```
+
+{{< map "map_3d" >}}
 
 ## License
 
