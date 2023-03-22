@@ -7,7 +7,7 @@
     "openmaptiles:version": "3.x"
   },
   "sources": {{ safeJS (partial (printf "map-sources/%s.json" .type) .) }},
-  "glyphs": "{{- site.BaseURL -}}/glyphs/{fontstack}/{range}.pbf",
+  "glyphs": "{{- BaseURL -}}/glyphs/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",
