@@ -1,4 +1,4 @@
-baseURL: 'https://marcpabst.github.io/hugo-maps/'
+BaseURL: 'https://marcpabst.github.io/hugo-maps/'
 languageCode: 'en-gb'
 title: 'Hugo Maps Demo'
 
