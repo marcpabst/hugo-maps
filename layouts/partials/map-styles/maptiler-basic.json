@@ -10,7 +10,7 @@
     "openmaptiles:mapbox:source:url": "mapbox://openmaptiles.4qljc88t"
   },
   "sources": {{ safeJS (partial (printf "map-sources/%s.json" .type) .) }},
-  "glyphs": "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
+  "glyphs": "{{- site.BaseUrl -}}/glyphs/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",

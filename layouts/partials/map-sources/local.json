@@ -5,7 +5,7 @@
       "type": "vector",
       "format": "pbf",
       "tiles": [
-          "http://localhost:1313/tiles/{z}/{x}/{y}.pbf"
+          "{{- site.BaseUrl -}}/tiles/{z}/{x}/{y}.pbf"
       ],
       "minzoom": {{- .tilesMinZoom -}},
       "maxzoom": {{- .tilesMaxZoom -}}

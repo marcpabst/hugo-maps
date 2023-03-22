@@ -21,7 +21,7 @@
     },
     "sources": {{ safeJS (partial (printf "map-sources/%s.json" .type) .) }},
     "sprite": "https://openmaptiles.github.io/positron-gl-style/sprite",
-    "glyphs": "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
+    "glyphs": "{{- site.BaseUrl -}}/glyphs/{fontstack}/{range}.pbf",
     "layers": [
       {
         "id": "background",
