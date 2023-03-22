@@ -984,7 +984,7 @@
           "symbol-spacing": 350,
           "text-field": "{name:latin} {name:nonlatin}",
           "text-font": [
-            "Noto Sans Italic"
+            "KlokanTech Noto Sans Italic"
           ],
           "text-letter-spacing": 0.2,
           "text-max-width": 5,
@@ -1019,7 +1019,7 @@
           "symbol-spacing": 200,
           "text-field": "{name:latin} {name:nonlatin}",
           "text-font": [
-            "Noto Sans Bold Italic"
+            "KlokanTech Noto Sans Bold Italic"
           ],
           "text-max-width": 9,
           "text-rotation-alignment": "map",
@@ -1066,7 +1066,7 @@
           "symbol-spacing": 250,
           "text-field": "{name:latin} {name:nonlatin}",
           "text-font": [
-            "Noto Sans Italic"
+            "KlokanTech Noto Sans Italic"
           ],
           "text-letter-spacing": 0.1,
           "text-max-width": 6,
@@ -1102,7 +1102,7 @@
           "symbol-spacing": 350,
           "text-field": "{name:latin} {name:nonlatin}",
           "text-font": [
-            "Noto Sans Italic"
+            "KlokanTech Noto Sans Italic"
           ],
           "text-letter-spacing": 0.2,
           "text-max-width": 5,
@@ -1136,13 +1136,13 @@
               [
                 6,
                 [
-                  "Noto Sans Regular"
+                  "KlokanTech Noto Sans Regular"
                 ]
               ],
               [
                 16,
                 [
-                  "Noto Sans Bold"
+                  "KlokanTech Noto Sans Bold"
                 ]
               ]
             ]
@@ -1200,13 +1200,13 @@
               [
                 6,
                 [
-                  "Noto Sans Regular"
+                  "KlokanTech Noto Sans Regular"
                 ]
               ],
               [
                 16,
                 [
-                  "Noto Sans Bold"
+                  "KlokanTech Noto Sans Bold"
                 ]
               ]
             ]
@@ -1246,7 +1246,7 @@
           "symbol-placement": "point",
           "text-field": "{name:latin}",
           "text-font": [
-            "Noto Sans Italic"
+            "KlokanTech Noto Sans Italic"
           ],
           "text-line-height": 1,
           "text-pitch-alignment": "map",
@@ -1288,13 +1288,13 @@
               [
                 12,
                 [
-                  "Nunito Regular"
+                  "KlokanTech Noto Sans Regular"
                 ]
               ],
               [
                 16,
                 [
-                  "Nunito Semi Bold"
+                  "KlokanTech Noto Sans Semi Bold"
                 ]
               ]
             ]
@@ -1348,13 +1348,13 @@
               [
                 4,
                 [
-                  "Nunito Regular"
+                  "KlokanTech Noto Sans Regular"
                 ]
               ],
               [
                 7,
                 [
-                  "Nunito Bold"
+                  "KlokanTech Noto Sans Bold"
                 ]
               ]
             ]
@@ -1421,13 +1421,13 @@
               [
                 8,
                 [
-                  "Nunito Regular"
+                  "KlokanTech Noto Sans Regular"
                 ]
               ],
               [
                 14,
                 [
-                  "Nunito Bold"
+                  "KlokanTech Noto Sans Bold"
                 ]
               ]
             ]
@@ -1476,7 +1476,7 @@
         "layout": {
           "text-field": "{name:latin} {name:nonlatin}",
           "text-font": [
-            "Nunito Semi Bold"
+            "KlokanTech Noto Sans Semi Bold"
           ],
           "text-max-width": 10,
           "text-size": 13,
@@ -1509,13 +1509,13 @@
               [
                 3,
                 [
-                  "Nunito Regular"
+                  "KlokanTech Noto Sans Regular"
                 ]
               ],
               [
                 4,
                 [
-                  "Nunito Bold"
+                  "KlokanTech Noto Sans Bold"
                 ]
               ]
             ]
@@ -1563,7 +1563,7 @@
         "layout": {
           "text-field": "{name:latin}",
           "text-font": [
-            "Nunito Extra Bold"
+            "KlokanTech Noto Sans Extra Bold"
           ],
           "text-line-height": 1.1,
           "text-max-width": 10,
