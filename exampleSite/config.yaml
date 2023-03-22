@@ -5,7 +5,7 @@ title: 'Hugo Maps Demo'
 params:
   hugo-maps:
       default:
-        tiles: https://api.maptiler.com/tiles/v3/{z}/{x}/{y}.pbf?key=get_your_own_OpIi9ZULNHzrESv6T2vL
+        tiles: https://api.maptiler.com/tiles/v3/{z}/{x}/{y}.pbf?key=143k20pEdcyOeBepEEnR
         height: 500px
       map_3d:
         type: remote
