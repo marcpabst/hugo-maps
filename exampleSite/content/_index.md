@@ -21,6 +21,7 @@ You can [**go to the examples**](#examples) or [**look at the included themes**]
 
 **{{< hint >}} Local maps are currently not supported, pending minor changes to Hugo's template engine. {{< /hint >}}**
 
+
 ## Getting Started
 
 ### 1. Add the module to your site
@@ -89,24 +90,7 @@ params:
 Here are the available configuration options with their default values:
 
 ```yaml
-type: remote # type of map - remote or local
-style: osm-bright # theme to use
-tilesMinZoom: # minimum zoom level for local maps
-tilesMaxZoom: # maximum zoom level for local maps
-center: [-0.127758, 51.507351] # center of the map
-minZoom: 0 # minimum zoom level
-maxZoom: 23 # maximum zoom level
-zoom: 11 # initial zoom level
-minPitch: 0 # minimum pitch
-maxPitch: 60 # maximum pitch
-pitch: 0 # initial pitch
-bearing: 0 # initial bearing
-antialias: false # whether to use antialiasing
-width: 100% # width of the map
-height: 300px # height of the map
-attributionControl: true # whether to show attribution
-customAttribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>' # custom attribution
-interactive: true # whether the map is interactive
+{{% showbase %}}
 ```
 
 ## Examples

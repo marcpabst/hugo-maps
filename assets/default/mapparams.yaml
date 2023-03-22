@@ -1,0 +1,19 @@
+style: osm-bright # theme to use
+type: remote # type of map, either remote or local
+tilesMinZoom: # minimum zoom level for local maps
+tilesMaxZoom: # maximum zoom level for local maps
+center: [-0.127758, 51.507351] # center of the map
+minZoom: 0 # minimum zoom level
+maxZoom: 23 # maximum zoom level
+zoom: 11 # initial zoom level
+minPitch: 0 # minimum pitch
+maxPitch: 60 # maximum pitch
+pitch: 0 # initial pitch
+bearing: 0 # initial bearing
+antialias: false # whether to use antialiasing
+width: 100% # width of the map
+height: 300px # height of the map
+attributionControl: true # whether to show attribution
+customAttribution: "" # custom attribution
+interactive: true # whether the map is interactive
+navigationControl: true # whether to show navigation controls

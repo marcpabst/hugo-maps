@@ -9,7 +9,7 @@
 {{- $mapname := md5 now.UnixNano -}}
 
 {{- $mapparams := (site.Params.Get "hugo-maps").Get (.Get "name") -}}
-{{- $baseparams := (site.Data.base) -}}
+{{- $baseparams := (resources.Get "default/mapparams.yaml") | unmarshal -}}
 {{- $defaultparams := (site.Params.Get "hugo-maps").default -}}
 
 {{- $mapparams = merge $baseparams $defaultparams $mapparams .Params -}}
@@ -146,8 +146,10 @@
             });
 
             // add navigation control (the +/- zoom buttons)
-            map.addControl(new maplibregl.NavigationControl());
-
+            {{ if $mapparams.navigationControl -}}
+                map.addControl(new maplibregl.NavigationControl());
+            {{ end }}
+    
             // add markers if any
             {{ range $mapparams.markers -}}
                 new maplibregl.Marker()
