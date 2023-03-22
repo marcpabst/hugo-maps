@@ -1294,7 +1294,7 @@
               [
                 16,
                 [
-                  "KlokanTech Noto Sans Semi Bold"
+                  "KlokanTech Noto Sans Regular"
                 ]
               ]
             ]
@@ -1476,7 +1476,7 @@
         "layout": {
           "text-field": "{name:latin} {name:nonlatin}",
           "text-font": [
-            "KlokanTech Noto Sans Semi Bold"
+            "KlokanTech Noto Sans Regular"
           ],
           "text-max-width": 10,
           "text-size": 13,
