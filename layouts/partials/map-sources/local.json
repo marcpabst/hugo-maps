@@ -5,7 +5,7 @@
       "type": "vector",
       "format": "pbf",
       "tiles": [
-          "{{- BaseURL -}}/tiles/{z}/{x}/{y}.pbf"
+          "{{- site.BaseURL -}}/tiles/{z}/{x}/{y}.pbf"
       ],
       "minzoom": {{- .tilesMinZoom -}},
       "maxzoom": {{- .tilesMaxZoom -}}

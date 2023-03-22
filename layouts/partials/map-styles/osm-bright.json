@@ -23,7 +23,7 @@
     "pitch": 0,
     "sources": {{ safeJS (partial (printf "map-sources/%s.json" .type) .) }},
     "sprite": "https://openmaptiles.github.io/osm-bright-gl-style/sprite",
-    "glyphs": "{{- BaseURL -}}/glyphs/{fontstack}/{range}.pbf",
+    "glyphs": "{{- site.BaseURL -}}/glyphs/{fontstack}/{range}.pbf",
     "layers": [
       {
         "id": "background",
