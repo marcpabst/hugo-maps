@@ -32,6 +32,8 @@ params:
         style: toner
 
 module:
-  import:
-   - "github.com/theNewDynamic/gohugo-theme-ananke"
-   - "github.com/marcpabst/hugo-maps"
+  imports:
+   - # theme
+     path: "github.com/theNewDynamic/gohugo-theme-ananke"
+   - # maps
+     path: "github.com/marcpabst/hugo-maps"
