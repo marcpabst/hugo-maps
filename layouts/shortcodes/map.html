@@ -18,12 +18,12 @@
 
 {{- if eq $mapparams.type "remote" -}}
 
-    {{- $tilesource := (dict "sources" (dict "openmaptiles" (dict "type" "vector" "url" ( $mapparams.tilejson)))) -}}
+    {{- $sources := (dict "sources" $mapparams.sources) -}}
     {{- $glyps := dict "glyphs" (print site.BaseURL "glyphs/{fontstack}/{range}.pbf") -}}
 
     {{- $mapstyle = resources.Get (printf "map-styles/%s.json" $mapparams.style) | unmarshal -}}
 
-    {{- $mapstyle = merge $mapstyle $tilesource -}}
+    {{- $mapstyle = merge $mapstyle $sources -}}
     {{- $mapstyle = merge $mapstyle $glyps -}}
 
 {{- else -}}

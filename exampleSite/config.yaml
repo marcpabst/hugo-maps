@@ -5,7 +5,9 @@ title: 'Hugo Maps Demo'
 params:
   hugo-maps:
       default:
-        tileJSON: https://api.maptiler.com/tiles/v3/tiles.json?key=143k20pEdcyOeBepEEnR
+        sources: 
+          - type: vector
+            url: https://api.maptiler.com/tiles/v3/tiles.json?key=143k20pEdcyOeBepEEnR
         height: 500px
       map_3d:
         style: maptiler-3d
