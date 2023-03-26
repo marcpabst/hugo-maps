@@ -26,7 +26,6 @@
     {{- $mapstyle = merge $mapstyle $sources -}}
 
     {{- if not $mapstyle.glyphs -}}
-            fsgr
         {{- $mapstyle = merge $mapstyle $glyphs -}}
     {{- end -}}
 
@@ -143,14 +142,15 @@
                 maxPitch: {{- $mapparams.maxPitch -}},
                 pitch: {{- $mapparams.pitch -}},
                 antialias: {{- $mapparams.antialias -}},
-                attributionControl: {{- $mapparams.attributionControl -}},
-                customAttribution: "{{- $mapparams.customAttribution -}}",
+                attributionControl: {{ $mapparams.attributionControl }},
+                customAttribution: "{{ $mapparams.customAttribution }}",
                 interactive: {{- $mapparams.interactive -}},
                 style: {{- $mapstyle | jsonify | safeJS -}},
             });
 
             // add navigation control (the +/- zoom buttons)
             {{ if $mapparams.navigationControl -}}
+            
                 map.addControl(new maplibregl.NavigationControl());
             {{ end }}
     
@@ -161,6 +161,13 @@
                     .setPopup(new maplibregl.Popup().setHTML("{{- .text -}}")) 
                     .addTo(map);
             {{- end -}}
+
+            // set feature state for each feature
+            map.on('data', function (e) {
+                {{ range $mapparams.setfeaturestate }}
+                    map.setFeatureState({{.feature}}, {{ .state }});
+                {{ end }}
+            });
     })
 </script>
 {{- end -}}

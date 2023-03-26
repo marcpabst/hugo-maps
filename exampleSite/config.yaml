@@ -33,6 +33,13 @@ params:
         zoom: 15
         center: [-0.127758, 51.507351]
         navigationControl: false
+        setFeatureState:
+          - feature:
+              id: 4372002
+              source: openmaptiles
+              sourceLayer: building
+            state: 
+              active: true
         sources: 
            composite:
              type: vector
