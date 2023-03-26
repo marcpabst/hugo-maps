@@ -182,11 +182,11 @@ params:
 
 {{< map name="theme_map" style="darkmatter" height="200px" >}}
 
-## OS Styles
+## Custom Styles
 
-Ordnance Survey's OS Open Zoomstack covers the whole of Great Britain. It is not compatible with the OpenMapTiles styles.
+Ordnance Survey's OS Open Zoomstack covers the whole of Great Britain. It is not compatible with the OpenMapTiles styles. However, you can create a custom style using the [Maputnik editor](https://maputnik.github.io/editor/). You can even combine the OS Open Zoomstack with the OpenMapTiles sources.
 
-### Simple 3D (`os-simple-3d`)
+### CVL 3D (`cvl-3d`)
 
 {{< map name="os_theme_map" style="cvl-3d" height="200px" >}}
 

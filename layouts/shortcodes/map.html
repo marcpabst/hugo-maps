@@ -19,12 +19,16 @@
 {{- if eq $mapparams.type "remote" -}}
 
     {{- $sources := (dict "sources" $mapparams.sources) -}}
-    {{- $glyps := dict "glyphs" (print site.BaseURL "glyphs/{fontstack}/{range}.pbf") -}}
+    {{- $glyphs := dict "glyphs" (print site.BaseURL "glyphs/{fontstack}/{range}.pbf") -}}
 
     {{- $mapstyle = resources.Get (printf "map-styles/%s.json" $mapparams.style) | unmarshal -}}
 
     {{- $mapstyle = merge $mapstyle $sources -}}
-    {{- $mapstyle = merge $mapstyle $glyps -}}
+
+    {{- if not $mapstyle.glyphs -}}
+            fsgr
+        {{- $mapstyle = merge $mapstyle $glyphs -}}
+    {{- end -}}
 
 {{- else -}}
 
