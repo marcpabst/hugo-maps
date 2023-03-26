@@ -152,7 +152,7 @@ params:
 {{< map name="map_3d" >}}
 
 
-## Themes
+## Openmaptiles Styles
 
 ### OSM-Bright (`osm-bright`)
 
@@ -181,6 +181,14 @@ params:
 ### Darkmatter (`darkmatter`)
 
 {{< map name="theme_map" style="darkmatter" height="200px" >}}
+
+## OS Styles
+
+Ordnance Survey's OS Open Zoomstack covers the whole of Great Britain. It is not compatible with the OpenMapTiles styles.
+
+### Simple 3D (`os-simple-3d`)
+
+{{< map name="os_theme_map" style="cvl-3d" height="200px" >}}
 
 ## License
 

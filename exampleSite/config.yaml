@@ -6,8 +6,9 @@ params:
   hugo-maps:
       default:
         sources: 
-          - type: vector
-            url: https://api.maptiler.com/tiles/v3/tiles.json?key=143k20pEdcyOeBepEEnR
+           openmaptiles:
+             type: vector
+             url: https://api.maptiler.com/tiles/v3/tiles.json?key=143k20pEdcyOeBepEEnR
         height: 500px
       map_3d:
         style: maptiler-3d
@@ -28,6 +29,19 @@ params:
         interactive: false
         center: [-0.127758, 51.507351]
         navigationControl: false
+      os_theme_map:
+        zoom: 15
+        interactive: false
+        center: [-0.127758, 51.507351]
+        navigationControl: false
+        sources: 
+           composite:
+             type: vector
+             url: https://s3-eu-west-1.amazonaws.com/tiles.os.uk/v2/data/vector/open-zoomstack/config.json
+           openmaptiles:
+             type: vector
+             url: https://api.maptiler.com/tiles/v3/tiles.json?key=143k20pEdcyOeBepEEnR
+            
       new_york_map:
         center: [-74.005833, 40.712778]
       map2:
