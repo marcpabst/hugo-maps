@@ -111,11 +111,9 @@
         {{- end -}}
 {{- end -}}
 
-{{- if not (page.Scratch.Get "maplibre-res-loaded") -}}
     <script src='{{- (resources.Get "js/maplibre-gl.js").RelPermalink -}}'></script>
     <link href='{{- (resources.Get "css/maplibre-gl.css").RelPermalink -}}' rel='stylesheet' />
-    {{- page.Scratch.Set "maplibre-res-loaded" true -}}
-{{- end -}}
+
 
 <style type="text/css">
     #map-{{- $mapname -}} {

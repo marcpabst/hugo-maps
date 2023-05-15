@@ -35,7 +35,7 @@ params:
         navigationControl: false
         setFeatureState:
           - feature:
-              id: 4372002
+              id: 688993137
               source: openmaptiles
               sourceLayer: building
             state: 
